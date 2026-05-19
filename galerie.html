@@ -186,6 +186,12 @@
       position: relative;
       display: block;
     }
+    .masonry-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
     .masonry-item:hover { transform: scale(1.015); transition: transform var(--tr); }
     .masonry-item:hover .masonry-overlay { opacity: 1; }
 
@@ -516,85 +522,34 @@
   <div class="container">
     <div class="masonry" id="masonry">
 
-      <!-- Row feel: varied heights across columns -->
-      <div class="masonry-item" data-cat="container">
-        <div class="ph ph-lg"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Foto 1</span></div>
-        <div class="masonry-overlay"><div class="masonry-caption">Ridicare container 20ft<em>Cluj-Napoca — 2024</em></div></div>
-      </div>
-
-      <div class="masonry-item" data-cat="imposibil">
-        <div class="ph ph-xl"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Foto 2</span></div>
-        <div class="masonry-overlay"><div class="masonry-caption">Stradă de 2.8m lățime<em>Zalău — livrat cu succes</em></div></div>
-      </div>
-
-      <div class="masonry-item" data-cat="utilaje">
-        <div class="ph ph-md"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Foto 3</span></div>
-        <div class="masonry-overlay"><div class="masonry-caption">Transport excavator<em>Bihor — 2023</em></div></div>
+      <div class="masonry-item" data-cat="constructii">
+        <img src="images/gallery/macara-lidl.jpg" alt="Macaragist — lucrare LIDL">
+        <div class="masonry-overlay"><div class="masonry-caption">Lucrare specială — LIDL<em>Sălaj</em></div></div>
       </div>
 
       <div class="masonry-item" data-cat="constructii">
-        <div class="ph ph-sm"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Foto 4</span></div>
-        <div class="masonry-overlay"><div class="masonry-caption">Pozitionare grindă prefabricată<em>Cluj — șantier rezidențial</em></div></div>
-      </div>
-
-      <div class="masonry-item" data-cat="container">
-        <div class="ph ph-md"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Foto 5</span></div>
-        <div class="masonry-overlay"><div class="masonry-caption">Container 40ft — birou șantier<em>Satu Mare — 2024</em></div></div>
+        <img src="images/gallery/macara-lidl2.jpg" alt="Macaragist — lucrare LIDL 2">
+        <div class="masonry-overlay"><div class="masonry-caption">Lucrare specială — LIDL (2)<em>Sălaj</em></div></div>
       </div>
 
       <div class="masonry-item" data-cat="imposibil">
-        <div class="ph ph-lg"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Foto 6</span></div>
-        <div class="masonry-overlay"><div class="masonry-caption">Curte interioară fără acces direct<em>Zalău — misiune îndeplinită</em></div></div>
-      </div>
-
-      <div class="masonry-item" data-cat="utilaje">
-        <div class="ph ph-xl"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Foto 7</span></div>
-        <div class="masonry-overlay"><div class="masonry-caption">Ridicare transformator electric<em>Maramureș — proiect industrial</em></div></div>
-      </div>
-
-      <div class="masonry-item" data-cat="constructii">
-        <div class="ph ph-md"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Foto 8</span></div>
-        <div class="masonry-overlay"><div class="masonry-caption">Dale de beton — acoperire canal<em>Sălaj — 2023</em></div></div>
+        <img src="images/gallery/macara-3etaje-cluj.jpg" alt="Macaragist — ridicare 3 etaje Cluj">
+        <div class="masonry-overlay"><div class="masonry-caption">Ridicare etaj 3<em>Cluj-Napoca</em></div></div>
       </div>
 
       <div class="masonry-item" data-cat="container">
-        <div class="ph ph-lg"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Foto 9</span></div>
-        <div class="masonry-overlay"><div class="masonry-caption">Container frigorific — industrie alimentară<em>Bihor — 2024</em></div></div>
-      </div>
-
-      <div class="masonry-item" data-cat="imposibil">
-        <div class="ph ph-sm"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Foto 10</span></div>
-        <div class="masonry-overlay"><div class="masonry-caption">Șantier fără spațiu de manevră<em>Cluj — complex rezidențial</em></div></div>
+        <img src="images/gallery/macara-container.jpg" alt="Macaragist — ridicare container">
+        <div class="masonry-overlay"><div class="masonry-caption">Ridicare container<em>Nord-Vest România</em></div></div>
       </div>
 
       <div class="masonry-item" data-cat="utilaje">
-        <div class="ph ph-md"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Foto 11</span></div>
-        <div class="masonry-overlay"><div class="masonry-caption">Transport combinator agricol<em>Satu Mare — 2022</em></div></div>
-      </div>
-
-      <div class="masonry-item" data-cat="constructii">
-        <div class="ph ph-xl"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Foto 12</span></div>
-        <div class="masonry-overlay"><div class="masonry-caption">Montaj structură metalică<em>Zalău — hală industrială</em></div></div>
-      </div>
-
-      <div class="masonry-item" data-cat="container">
-        <div class="ph ph-md"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Foto 13</span></div>
-        <div class="masonry-overlay"><div class="masonry-caption">Stivuire containere — depozit<em>Cluj — terminal logistic</em></div></div>
+        <img src="images/gallery/macara-cluj.jpg" alt="Macaragist — macara Cluj">
+        <div class="masonry-overlay"><div class="masonry-caption">Lucrare cu macara<em>Cluj-Napoca</em></div></div>
       </div>
 
       <div class="masonry-item" data-cat="imposibil">
-        <div class="ph ph-lg"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Foto 14</span></div>
-        <div class="masonry-overlay"><div class="masonry-caption">Ridicare prin copertina clădirii<em>Oradea — proiect special</em></div></div>
-      </div>
-
-      <div class="masonry-item" data-cat="utilaje">
-        <div class="ph ph-sm"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Foto 15</span></div>
-        <div class="masonry-overlay"><div class="masonry-caption">Generator industrial 500kVA<em>Maramureș — 2024</em></div></div>
-      </div>
-
-      <div class="masonry-item" data-cat="constructii">
-        <div class="ph ph-md"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Foto 16</span></div>
-        <div class="masonry-overlay"><div class="masonry-caption">Stâlpi electricitate — linie medie tensiune<em>Sălaj — 2023</em></div></div>
+        <img src="images/gallery/macara-etaj3.jpg" alt="Macaragist — ridicare etaj 3">
+        <div class="masonry-overlay"><div class="masonry-caption">Acces imposibil — etaj 3<em>Sălaj</em></div></div>
       </div>
 
     </div>
