@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Macaragist — Transport și ridicare cu macara în Sălaj, Cluj, Bihor, Satu Mare, Maramureș. 30 de ani de experiență în lucrări imposibile.">
+  <meta property="og:title" content="Macaragist — Transport și Ridicare cu Macara">
+  <meta property="og:description" content="30 de ani. Locuri imposibile. Nicio scuză.">
+  <meta property="og:type" content="website">
+  <title>Macaragist — Transport și Ridicare cu Macara</title>
+  <link rel="icon" type="image/png" href="favicon.png?v=2">
+  <link rel="apple-touch-icon" href="favicon.png?v=2">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0A0A0A;
+      --surface: #141414;
+      --surface-2: #1A1A1A;
+      --accent: #E87B1E;
+      --accent-h: #F08C30;
+      --text: #F5F5F5;
+      --muted: #888888;
+      --border: #222222;
+      --radius: 8px;
+      --tr: 0.3s ease;
+      --mw: 1200px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ── UTILITIES ── */
+    .container { max-width: var(--mw); margin: 0 auto; padding: 0 24px; }
+
+    .label {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .title {
+      font-size: clamp(30px, 4.5vw, 52px);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+
+    .subtitle {
+      font-size: 17px;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 560px;
+    }
+
+    /* ── NAVBAR ── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 900;
+      padding: 22px 0;
+      transition: padding var(--tr), background var(--tr), border-color var(--tr), backdrop-filter var(--tr);
+      border-bottom: 1px solid transparent;
+    }
+
+    .nav.scrolled {
+      padding: 14px 0;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-color: var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .nav-logo {
+      font-size: 19px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      color: var(--text);
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .nav-logo b { color: var(--accent); font-weight: 900; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color var(--tr);
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-phone {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      flex-shrink: 0;
+      transition: color var(--tr);
+    }
+    .nav-phone:hover { color: var(--accent); }
+    .nav-phone svg { flex-shrink: 0; }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all var(--tr);
+    }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('images/landingpage.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 780px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.25s forwards;
+    }
+    .hero-badge::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 2px;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .hero-h1 {
+      font-size: clamp(44px, 7.5vw, 86px);
+      font-weight: 900;
+      line-height: 1.02;
+      letter-spacing: -0.025em;
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.45s forwards;
+    }
+    .hero-h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: clamp(16px, 2.2vw, 20px);
+      color: rgba(245,245,245,0.72);
+      line-height: 1.7;
+      max-width: 560px;
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.65s forwards;
+    }
+    .hero-sub strong { color: var(--text); font-weight: 600; }
+
+    .hero-ctas {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.85s forwards;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      opacity: 0;
+      animation: fadeIn 1s ease 1.4s forwards;
+    }
+    .scroll-mouse {
+      width: 22px;
+      height: 36px;
+      border: 2px solid rgba(255,255,255,0.18);
+      border-radius: 11px;
+      display: flex;
+      justify-content: center;
+      padding-top: 5px;
+    }
+    .scroll-mouse::after {
+      content: '';
+      width: 3px;
+      height: 7px;
+      background: var(--accent);
+      border-radius: 2px;
+      animation: scrollPulse 1.6s ease infinite;
+    }
+    .scroll-hint span {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 15px 30px;
+      border-radius: var(--radius);
+      font-size: 15px;
+      font-weight: 700;
+      font-family: inherit;
+      text-decoration: none;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all var(--tr);
+      white-space: nowrap;
+      letter-spacing: 0.01em;
+      line-height: 1;
+    }
+
+    .btn-wa {
+      background: #25D366;
+      color: #fff;
+      border-color: #25D366;
+    }
+    .btn-wa:hover {
+      background: #1fbc59;
+      border-color: #1fbc59;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(37,211,102,0.3);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border-color: rgba(245,245,245,0.25);
+    }
+    .btn-outline:hover {
+      border-color: rgba(245,245,245,0.6);
+      background: rgba(245,245,245,0.07);
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .btn-primary:hover {
+      background: var(--accent-h);
+      border-color: var(--accent-h);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(232,123,30,0.35);
+    }
+
+    /* ── STATS ── */
+    .stats {
+      background: #111111;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 56px 0;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+    }
+    .stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 24px 40px;
+      position: relative;
+    }
+    .stat + .stat::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+      height: 56px;
+      background: var(--border);
+    }
+    .stat-num {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 900;
+      color: var(--accent);
+      line-height: 1;
+      letter-spacing: -0.025em;
+      margin-bottom: 10px;
+    }
+    .stat-lbl {
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    /* ── SERVICES ── */
+    .services { padding: 100px 0; }
+    .section-head { margin-bottom: 60px; }
+
+    .cards-3 {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid transparent;
+      border-radius: 12px;
+      padding: 40px 34px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    .card:hover {
+      transform: scale(1.03) translateY(-6px);
+      border-left: 3px solid #E87B1E;
+      background: #1a1a1a;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    .card-icon {
+      width: 52px;
+      height: 52px;
+      background: rgba(232,123,30,0.1);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+      transition: background var(--tr), transform 0.3s ease;
+    }
+    .card:hover .card-icon { background: rgba(232,123,30,0.18); transform: scale(1.15); }
+    .card-icon svg {
+      width: 26px; height: 26px;
+      stroke: var(--accent);
+      fill: none;
+      stroke-width: 1.75;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .card-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .card-desc {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── IMPOSSIBLE ── */
+    .impossible {
+      padding: 100px 0;
+      background: #0D0D0D;
+    }
+
+    .img-cards {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 20px;
+    }
+
+    .img-card {
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      min-height: 280px;
+      position: relative;
+      cursor: pointer;
+    }
+    .img-card:hover { transform: translateY(-4px); }
+    .img-card:hover .img-card-overlay { background: rgba(0,0,0,0.45); }
+    .img-card > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .img-card:hover > img { transform: scale(1.04); }
+
+    .ph {
+      width: 100%; height: 100%;
+      background: #1c1c1c;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+    .ph::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 18px,
+        rgba(255,255,255,0.015) 18px,
+        rgba(255,255,255,0.015) 19px
+      );
+    }
+    .ph svg {
+      width: 38px; height: 38px;
+      stroke: #2e2e2e;
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      position: relative;
+    }
+    .ph span {
+      font-size: 11px;
+      color: #333;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+      position: relative;
+    }
+
+    .img-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.62);
+      transition: background var(--tr);
+      display: flex;
+      align-items: flex-end;
+      padding: 22px;
+    }
+    .img-caption {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.35;
+    }
+    .img-caption em {
+      display: block;
+      font-style: normal;
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 500;
+      margin-top: 5px;
+    }
+
+    /* ── COVERAGE ── */
+    .coverage { padding: 100px 0; }
+    .coverage-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .counties {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+    .county {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 18px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: 0.03em;
+      transition: all var(--tr);
+    }
+    .county:hover { border-color: var(--accent); color: var(--accent); }
+
+    .coverage-note {
+      margin-top: 20px;
+      padding: 18px 22px;
+      background: rgba(232,123,30,0.07);
+      border: 1px solid rgba(232,123,30,0.18);
+      border-radius: 10px;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    .coverage-note strong { color: var(--accent); font-weight: 600; }
+
+    .romania-map {
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    .romania-map-label {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #E87B1E;
+      font-weight: 700;
+      font-size: 15px;
+      text-align: center;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    /* ── GALLERY ── */
+    .gallery {
+      padding: 100px 0;
+      background: #0D0D0D;
+    }
+    .gallery-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 44px;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 14px;
+    }
+    .gallery-item {
+      border-radius: 10px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      transition: transform var(--tr);
+    }
+    .gallery-item:hover { transform: translateY(-4px); }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.04); }
+
+    /* ── CONTACT ── */
+    .contact { padding: 100px 0; }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+      margin-top: 56px;
+    }
+
+    .form-group { margin-bottom: 18px; }
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 13px 16px;
+      font-size: 15px;
+      font-family: inherit;
+      color: var(--text);
+      transition: border-color var(--tr);
+      outline: none;
+      resize: vertical;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: var(--accent); }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: #3a3a3a; }
+    .form-group textarea { min-height: 120px; }
+
+    .form-submit { width: 100%; margin-top: 4px; }
+
+    .contact-aside { padding-top: 4px; }
+    .contact-aside-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 32px;
+    }
+
+    .ci {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .ci-icon {
+      width: 44px; height: 44px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .ci-icon svg {
+      width: 19px; height: 19px;
+      stroke: var(--accent);
+      fill: none;
+      stroke-width: 1.75;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .ci-lbl {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .ci-val {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      display: block;
+      transition: color var(--tr);
+    }
+    a.ci-val:hover { color: var(--accent); }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 28px 0;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: #080808;
+      border-top: 1px solid var(--border);
+      padding: 52px 0 32px;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      gap: 60px;
+      align-items: start;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 28px;
+    }
+    .footer-logo {
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      color: var(--text);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 12px;
+    }
+    .footer-logo b { color: var(--accent); }
+    .footer-tagline {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 260px;
+      line-height: 1.65;
+    }
+    .footer-nav-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .footer-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+    .footer-nav a {
+      font-size: 14px;
+      color: rgba(245,245,245,0.5);
+      text-decoration: none;
+      transition: color var(--tr);
+    }
+    .footer-nav a:hover { color: var(--text); }
+    .footer-contact { text-align: right; }
+    .footer-tel {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 6px;
+      transition: color var(--tr);
+    }
+    .footer-tel:hover { color: var(--accent); }
+    .footer-loc { font-size: 14px; color: var(--muted); }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-copy { font-size: 13px; color: var(--muted); }
+    .footer-copy strong { color: rgba(245,245,245,0.4); font-weight: 600; }
+    .footer-wa {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color var(--tr);
+    }
+    .footer-wa:hover { color: #25D366; }
+
+    /* ── REVEAL ── */
+    .rev {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .rev.in { opacity: 1; transform: none; }
+    .rev-d1 { transition-delay: 0.1s; }
+    .rev-d2 { transition-delay: 0.2s; }
+    .rev-d3 { transition-delay: 0.3s; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes scrollPulse {
+      0%   { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(9px); opacity: 0; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .cards-3, .img-cards, .gallery-grid { grid-template-columns: repeat(2,1fr); }
+      .coverage-inner { gap: 48px; }
+      .contact-grid { gap: 48px; }
+      .footer-top { grid-template-columns: 1fr; gap: 32px; }
+      .footer-contact { text-align: left; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: flex; }
+
+      .nav-links {
+        position: absolute;
+        top: 100%; left: 0; right: 0;
+        background: rgba(10,10,10,0.97);
+        flex-direction: column;
+        padding: 24px;
+        gap: 18px;
+        border-bottom: 1px solid var(--border);
+        display: none;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { font-size: 16px; color: var(--text); }
+
+      .nav-phone span { display: none; }
+
+      .cards-3, .img-cards, .gallery-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .stat + .stat::before { display: none; }
+      .coverage-inner, .contact-grid { grid-template-columns: 1fr; }
+      .romania-map { display: none; }
+      .gallery-head { flex-direction: column; align-items: flex-start; }
+      .gallery-head .btn { align-self: flex-start; }
+      .hero-ctas { flex-direction: column; align-items: stretch; }
+      .hero-ctas .btn { text-align: center; }
+      .footer-top { grid-template-columns: 1fr; gap: 28px; }
+      .footer-contact { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════ NAVBAR ══════════════════ -->
+<nav class="nav" id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">MACARA<b>GIST</b></a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Meniu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#servicii">Servicii</a></li>
+        <li><a href="#lucrari">Lucrări</a></li>
+        <li><a href="gallery.html">Galerie</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <a href="tel:0744479138" class="nav-phone">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-.07-8.72A2 2 0 014.18 0H7.1a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+        </svg>
+        <span>0744 479 138</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ══════════════════ HERO ══════════════════ -->
+<section class="hero" id="acasa">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">Transport cu macara — România</div>
+
+      <h1 class="hero-h1">
+        30 de ani.<br>
+        Locuri imposibile.<br>
+        <em>Nicio scuză.</em>
+      </h1>
+
+      <p class="hero-sub">
+        Transport și ridicare cu macara — containere, utilaje, materiale de construcții.
+        Acolo unde alții spun nu, noi spunem <strong>când.</strong>
+      </p>
+
+      <div class="hero-ctas">
+        <a href="https://wa.me/40744479138" class="btn btn-wa" target="_blank" rel="noopener noreferrer">
+          <!-- WhatsApp icon -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          WhatsApp acum
+        </a>
+        <a href="#contact" class="btn btn-outline">
+          Cere ofertă
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="scroll-mouse"></div>
+  </div>
+</section>
+
+
+<!-- ══════════════════ STATS ══════════════════ -->
+<section class="stats" id="stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat">
+        <div class="stat-num" data-target="10000" data-pre="Peste " data-suf="+">0</div>
+        <div class="stat-lbl">Lucrări finalizate</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" data-target="1000000" data-pre="Peste " data-suf=" t">0</div>
+        <div class="stat-lbl">Tone ridicate</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" data-target="30" data-pre="" data-suf="+ ani">0</div>
+        <div class="stat-lbl">Experiență</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════ SERVICES ══════════════════ -->
+<section class="services" id="servicii">
+  <div class="container">
+    <div class="section-head">
+      <div class="label rev">Ce facem</div>
+      <h2 class="title rev rev-d1">Servicii</h2>
+    </div>
+
+    <div class="cards-3">
+      <!-- Container -->
+      <div class="card rev">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24">
+            <rect x="2" y="7" width="20" height="13" rx="2"/>
+            <path d="M2 12h20"/>
+            <line x1="8" y1="7" x2="8" y2="20"/>
+            <line x1="16" y1="7" x2="16" y2="20"/>
+          </svg>
+        </div>
+        <div class="card-title">Containere</div>
+        <div class="card-desc">Transport și ridicare containere de orice dimensiune — de la 10 la 40 de picioare, cu precizie și siguranță deplină.</div>
+      </div>
+
+      <!-- Utilaje -->
+      <div class="card rev rev-d1">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>
+          </svg>
+        </div>
+        <div class="card-title">Utilaje & Echipamente</div>
+        <div class="card-desc">Ridicare și transport utilaje industriale și agricole — tractoare, excavatoare, generatoare, transformatoare electrice.</div>
+      </div>
+
+      <!-- Materiale -->
+      <div class="card rev rev-d2">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+            <polyline points="2 17 12 22 22 17"/>
+            <polyline points="2 12 12 17 22 12"/>
+          </svg>
+        </div>
+        <div class="card-title">Materiale de construcții</div>
+        <div class="card-desc">Livrare și pozitionare materiale pe șantier — prefabricate, stâlpi, grinzi, dale. Direct acolo unde este nevoie.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════ IMPOSSIBLE JOBS ══════════════════ -->
+<section class="impossible" id="lucrari">
+  <div class="container">
+    <div class="section-head">
+      <div class="label rev">Specializare</div>
+      <h2 class="title rev rev-d1">Lucrări imposibile</h2>
+      <p class="subtitle rev rev-d2">Acolo unde spațiul nu există, noi găsim soluția.</p>
+    </div>
+
+    <div class="img-cards">
+      <div class="img-card rev">
+        <img src="images/impossible/imposibil-hala-ingusta.jpg" alt="Hală industrială fără spațiu de manevră" loading="lazy">
+        <div class="img-card-overlay">
+          <div class="img-caption">
+            Hală industrială fără spațiu de manevră
+            <em>Macara manevrată în interior de hală îngustă. Zero erori.</em>
+          </div>
+        </div>
+      </div>
+
+      <div class="img-card rev rev-d1">
+        <img src="images/impossible/imposibil-hala-ingusta2.jpg" alt="Acces imposibil, livrare garantată" loading="lazy">
+        <div class="img-card-overlay">
+          <div class="img-caption">
+            Acces imposibil, livrare garantată
+            <em>Utilaj pozitionat cu precizie în spațiu închis.</em>
+          </div>
+        </div>
+      </div>
+
+      <div class="img-card rev rev-d2">
+        <img src="images/impossible/imposibil-hala-ingusta3.jpg" alt="Șantier fără spațiu de manevră" loading="lazy">
+        <div class="img-card-overlay">
+          <div class="img-caption">
+            Șantier fără spațiu de manevră
+            <em>Misiune îndeplinită.</em>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════ COVERAGE ══════════════════ -->
+<section class="coverage" id="acoperire">
+  <div class="container">
+    <div class="coverage-inner">
+      <div>
+        <div class="label rev">Unde lucrăm</div>
+        <h2 class="title rev rev-d1">Zone de acoperire</h2>
+        <p class="subtitle rev rev-d2">Acoperim nord-vestul României și ne deplasăm la nivel național pentru proiecte speciale.</p>
+
+        <div class="counties rev">
+          <span class="county">Sălaj</span>
+          <span class="county">Cluj</span>
+          <span class="county">Bihor</span>
+          <span class="county">Satu Mare</span>
+          <span class="county">Maramureș</span>
+        </div>
+
+        <div class="coverage-note rev rev-d1">
+          <strong>La nivel național</strong> — pentru lucrări speciale și proiecte de amploare ne deplasăm oriunde în România.
+        </div>
+      </div>
+
+      <div class="romania-map rev rev-d2">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/4/4d/Romania-districts_map.png"
+          alt="Hartă județe România"
+          width="100%"
+          style="max-width:420px;opacity:0.4;filter:grayscale(100%);display:block;">
+        <div class="romania-map-label">NV României — zona noastră principală</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════ GALLERY TEASER ══════════════════ -->
+<section class="gallery" id="galerie">
+  <div class="container">
+    <div class="gallery-head">
+      <div>
+        <div class="label">Portofoliu</div>
+        <h2 class="title">Galerie</h2>
+      </div>
+      <a href="gallery.html" class="btn btn-outline">
+        Vezi toate lucrările →
+      </a>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="images/gallery/macara-lidl.jpg" alt="Ridicare macara la Lidl" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/gallery/macara-lidl2.jpg" alt="Macara la Lidl - lucrare finalizata" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/gallery/macara-3etaje-cluj.jpg" alt="Ridicare macara 3 etaje Cluj" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/gallery/macara-container.jpg" alt="Transport container cu macara" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/gallery/macara-cluj.jpg" alt="Lucrare macara Cluj" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/gallery/macara-etaj3.jpg" alt="Ridicare macara etaj 3" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════ CONTACT ══════════════════ -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div>
+      <div class="label rev">Să vorbim</div>
+      <h2 class="title rev rev-d1">Cere ofertă</h2>
+    </div>
+
+    <div class="contact-grid">
+      <!-- Form -->
+      <div class="rev">
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="contactForm">
+          <div class="form-group">
+            <label for="name">Nume *</label>
+            <input type="text" id="name" name="name" placeholder="Numele dumneavoastră" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Telefon *</label>
+            <input type="tel" id="phone" name="phone" placeholder="07XX XXX XXX" required>
+          </div>
+          <div class="form-group">
+            <label for="city">Localitate *</label>
+            <input type="text" id="city" name="city" placeholder="Orașul / Comuna" required>
+          </div>
+          <div class="form-group">
+            <label for="msg">Descriere lucrare *</label>
+            <textarea id="msg" name="message" placeholder="Descrieți ce aveți nevoie — tip lucrare, dimensiuni, acces, termen..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary form-submit" id="submitBtn">
+            Trimite cererea
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="22" y1="2" x2="11" y2="13"/>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+            </svg>
+          </button>
+        </form>
+      </div>
+
+      <!-- Contact info -->
+      <div class="contact-aside rev rev-d1">
+        <div class="contact-aside-title">Contact direct</div>
+
+        <div class="ci">
+          <div class="ci-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-.07-8.72A2 2 0 014.18 0H7.1a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="ci-lbl">Telefon</div>
+            <a href="tel:0744479138" class="ci-val">0744 479 138</a>
+          </div>
+        </div>
+
+        <div class="ci">
+          <div class="ci-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <div>
+            <div class="ci-lbl">Locație</div>
+            <div class="ci-val" style="font-size:15px;cursor:default;">Nusfalău, județul Sălaj</div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <a href="https://wa.me/40744479138" class="btn btn-wa" target="_blank" rel="noopener noreferrer" style="width:100%;justify-content:center;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          Scrie pe WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <a href="#" class="footer-logo">MACARA<b>GIST</b></a>
+        <div class="footer-tagline">Transport și ridicare cu macara în nord-vestul României. 30 de ani de experiență în lucrări imposibile.</div>
+      </div>
+
+      <div>
+        <div class="footer-nav-title">Navigare</div>
+        <div class="footer-nav">
+          <a href="#servicii">Servicii</a>
+          <a href="#lucrari">Lucrări</a>
+          <a href="gallery.html">Galerie</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+
+      <div class="footer-contact">
+        <a href="tel:0744479138" class="footer-tel">0744 479 138</a>
+        <div class="footer-loc">Nusfalău, Sălaj</div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy">
+        <strong>MACARAGIST</strong> — Nusfalău, Sălaj — Toate drepturile rezervate © 2025
+      </div>
+      <a href="https://wa.me/40744479138" class="footer-wa" target="_blank" rel="noopener noreferrer">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  // ── NAVBAR SCROLL ──
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  // ── MOBILE MENU ──
+  const toggle = document.getElementById('navToggle');
+  const links  = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open);
+  });
+  links.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      links.classList.remove('open');
+      toggle.classList.remove('open');
+    });
+  });
+
+  // ── STATS COUNTER ──
+  function fmtRo(n) {
+    return n.toLocaleString('ro-RO');
+  }
+
+  function runCounter(el) {
+    const target = parseInt(el.dataset.target, 10);
+    const pre    = el.dataset.pre  || '';
+    const suf    = el.dataset.suf  || '';
+    const dur    = 1800;
+    const fps    = 60;
+    const steps  = Math.round(dur / (1000 / fps));
+    let step = 0;
+
+    const tick = () => {
+      step++;
+      const pct = step / steps;
+      // ease-out cubic
+      const ease = 1 - Math.pow(1 - pct, 3);
+      const val  = Math.round(target * ease);
+      el.textContent = pre + fmtRo(val) + suf;
+      if (step < steps) requestAnimationFrame(tick);
+      else el.textContent = pre + fmtRo(target) + suf;
+    };
+    requestAnimationFrame(tick);
+  }
+
+  const statsIO = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('[data-target]').forEach(runCounter);
+        statsIO.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  statsIO.observe(document.getElementById('stats-section'));
+
+  // ── REVEAL ON SCROLL ──
+  const revIO = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        revIO.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.rev').forEach(el => revIO.observe(el));
+
+  // ── FORM ──
+  const form = document.getElementById('contactForm');
+  const submitBtn = document.getElementById('submitBtn');
+  if (form) {
+    form.addEventListener('submit', () => {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = 'Se trimite…';
+    });
+  }
+</script>
+
+</body>
+</html>
