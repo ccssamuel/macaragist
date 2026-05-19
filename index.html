@@ -388,6 +388,7 @@
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
       padding: 56px 0;
+      will-change: transform;
     }
 
     .stats-grid {
@@ -1599,37 +1600,49 @@
       return n.toLocaleString('ro-RO');
     }
 
+    function showFinalNumbers() {
+      document.querySelectorAll('[data-target]').forEach(el => {
+        const target = parseInt(el.dataset.target, 10);
+        const pre = el.dataset.pre || '';
+        const suf = el.dataset.suf || '';
+        el.textContent = pre + fmtRo(target) + suf;
+      });
+    }
+
     function runCounter(el) {
       const target = parseInt(el.dataset.target, 10);
       const pre = el.dataset.pre || '';
       const suf = el.dataset.suf || '';
-      const dur = 1800;
-      const fps = 60;
-      const steps = Math.round(dur / (1000 / fps));
-      let step = 0;
+      const dur = 1500;
+      let start = null;
 
-      const tick = () => {
-        step++;
-        const pct = step / steps;
-        // ease-out cubic
+      const tick = (ts) => {
+        if (!start) start = ts;
+        const pct = Math.min((ts - start) / dur, 1);
         const ease = 1 - Math.pow(1 - pct, 3);
-        const val = Math.round(target * ease);
-        el.textContent = pre + fmtRo(val) + suf;
-        if (step < steps) requestAnimationFrame(tick);
+        el.textContent = pre + fmtRo(Math.round(target * ease)) + suf;
+        if (pct < 1) requestAnimationFrame(tick);
         else el.textContent = pre + fmtRo(target) + suf;
       };
       requestAnimationFrame(tick);
     }
 
-    const statsIO = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.querySelectorAll('[data-target]').forEach(runCounter);
-          statsIO.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.4 });
-    statsIO.observe(document.getElementById('stats-section'));
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (isMobile || reducedMotion) {
+      showFinalNumbers();
+    } else {
+      const statsIO = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.querySelectorAll('[data-target]').forEach(runCounter);
+            statsIO.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.4 });
+      statsIO.observe(document.getElementById('stats-section'));
+    }
 
     // ── REVEAL ON SCROLL ──
     const revIO = new IntersectionObserver(entries => {
